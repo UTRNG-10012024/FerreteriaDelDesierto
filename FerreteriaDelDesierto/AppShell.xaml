@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell
+    x:Class="FerreteriaDelDesierto.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:FerreteriaDelDesierto.MVVM.Views"
+    xmlns:local="clr-namespace:FerreteriaDelDesierto"
+    FlyoutBackgroundColor="LightGray">
+
+    <Shell.FlyoutHeader>
+        <Grid BackgroundColor="DarkSlateGray" HeightRequest="150">
+            <Label
+                FontFamily="KanitB" FontSize="Large"
+                HorizontalOptions="Center"
+                Text="Ferretería del Desierto"
+                TextColor="White"
+                VerticalOptions="Center"/>
+        </Grid>
+    </Shell.FlyoutHeader>
+
+    <Shell.FlyoutFooter>
+        <Grid Padding="15" BackgroundColor="LightGray" HeightRequest="100">
+            <Label
+                FontAttributes="Bold"
+                HorizontalOptions="Center"
+                Text="Powered by .NET MAUI"
+                TextColor="Black"/>
+        </Grid>
+    </Shell.FlyoutFooter>
+
+    <FlyoutItem Title="Inicio">
+        <FlyoutItem.Icon>
+            <FontImageSource FontFamily="Icons" Glyph="home" Color="White"/>
+        </FlyoutItem.Icon>
+        <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Catálogo">
+        <FlyoutItem.Icon>
+            <FontImageSource FontFamily="Icons" Glyph="catalog" Color="White"/>
+        </FlyoutItem.Icon>
+        <ShellContent ContentTemplate="{DataTemplate views:CatalogPage}" />
+    </FlyoutItem>
+
+    <MenuItem Command="{Binding HelpCommand}" Text="Ayuda">
+        <MenuItem.IconImageSource>
+            <FontImageSource FontFamily="Icons" Glyph="help" Color="White"/>
+        </MenuItem.IconImageSource>
+    </MenuItem>
+
+</Shell>

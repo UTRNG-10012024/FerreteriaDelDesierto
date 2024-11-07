@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:FerreteriaDelDesierto.MVVM.ViewModels"
+             x:Class="FerreteriaDelDesierto.MainPage"
+             x:Name="MyPage" 
+             Title="Inicio">
+    <ScrollView>
+        <StackLayout>
+            <!-- Barra de búsqueda -->
+            <SearchBar Placeholder="Buscar productos..."
+                       Text="{Binding SearchText}" />
+
+            <!-- Etiqueta de bienvenida -->
+            <Label Text="Bienvenido a Ferreteria del Desierto" FontSize="24" HorizontalOptions="Center" />
+
+            <!-- Descripción de la ferretería -->
+            <Label Text="Ferretería del Desierto es una cadena de tiendas especializadas en la venta de herramientas, materiales de construcción y productos relacionados con el mantenimiento y mejora del hogar. Cuenta con cinco sucursales distribuidas a lo largo de la región norte del país y ha identificado la necesidad de expandir su presencia digital mediante una aplicación móvil. La ferretería se destaca por ofrecer una amplia gama de productos, desde herramientas manuales hasta soluciones avanzadas en electricidad y plomería."
+                   FontSize="16"
+                   HorizontalOptions="Center"
+                   VerticalOptions="CenterAndExpand"
+                   Padding="10"
+                   TextColor="White"
+                   LineBreakMode="WordWrap"/>
+
+            <!-- Listado de productos filtrados -->
+            <CollectionView ItemsSource="{Binding ProductosFiltrados}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="10" Padding="10">
+                            <StackLayout>
+                                <Image Source="{Binding Imagen}" HeightRequest="100"/>
+                                <Label Text="{Binding Nombre}" FontSize="Medium"/>
+                                <Label Text="{Binding Precio, StringFormat='Precio: {0:C}'}" />
+                                <Button Text="Agregar al carrito" 
+                                        Command="{Binding Source={x:Reference Name=MyPage}, Path=BindingContext.AgregarAlCarritoCommand}" 
+                                        CommandParameter="{Binding}" />
+                            </StackLayout>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
